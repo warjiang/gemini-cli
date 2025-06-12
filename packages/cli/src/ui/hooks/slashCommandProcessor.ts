@@ -649,7 +649,7 @@ Add any other context about the problem here.
     if (settings.merged.enableIDE) {
       commands.push({
         name: 'ide',
-        description: 'Connect to a supported IDE',
+        description: 'connect to a supported IDE',
         action: (_mainCommand, _subCommand, _args) => {
           openConnectIDEDialog();
         },
