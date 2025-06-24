@@ -43,12 +43,7 @@ export class TestRig {
   }
 
   sync() {
-    // sync is not available on Windows.
-    if (process.platform === 'win32') {
-      return;
-    }
-    // We need to sync the filesystem to make sure that the files we've
-    // created are visible to the new process we're about to spawn.
+    // ensure file system is done before spawning
     execSync('sync', { cwd: this.testDir });
   }
 
