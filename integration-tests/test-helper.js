@@ -42,6 +42,16 @@ export class TestRig {
     mkdirSync(join(this.testDir, dir));
   }
 
+  sync() {
+    // sync is not available on Windows.
+    if (process.platform === 'win32') {
+      return;
+    }
+    // We need to sync the filesystem to make sure that the files we've
+    // created are visible to the new process we're about to spawn.
+    execSync('sync', { cwd: this.testDir });
+  }
+
   run(prompt, ...args) {
     const output = execSync(
       `node ${this.bundlePath} --yolo --prompt "${prompt}" ${args.join(' ')}`,
