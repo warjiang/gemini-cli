@@ -5,18 +5,14 @@
  */
 
 import updateNotifier from 'update-notifier';
-import { readPackageUp } from 'read-package-up';
-import process from 'node:process';
+import { getPackageJson } from '../../utils/package.js';
 
 export async function checkForUpdates(): Promise<string | null> {
   try {
-    // read-package-up looks for the closest package.json from cwd
-    const pkgResult = await readPackageUp({ cwd: process.cwd() });
-    if (!pkgResult) {
+    const packageJson = await getPackageJson();
+    if (!packageJson || !packageJson.name || !packageJson.version) {
       return null;
     }
-
-    const { packageJson } = pkgResult;
     const notifier = updateNotifier({
       pkg: {
         name: packageJson.name,
