@@ -50,6 +50,7 @@ export type ContentGeneratorConfig = {
   apiKey?: string;
   vertexai?: boolean;
   authType?: AuthType | undefined;
+  proxy?: string | undefined;
 };
 
 export function createContentGeneratorConfig(
@@ -67,6 +68,7 @@ export function createContentGeneratorConfig(
   const contentGeneratorConfig: ContentGeneratorConfig = {
     model: effectiveModel,
     authType,
+    proxy: config?.getProxy(),
   };
 
   // If we are using Google auth or we are in Cloud Shell, there is nothing else to validate for now
@@ -125,6 +127,7 @@ export async function createContentGenerator(
       config.authType,
       gcConfig,
       sessionId,
+      config.proxy,
     );
   }
 
