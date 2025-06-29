@@ -22,6 +22,7 @@ import { Config } from '../config/config.js';
 import { getErrorMessage } from '../utils/errors.js';
 import { AuthType } from '../core/contentGenerator.js';
 import readline from 'node:readline';
+import { Gaxios } from 'gaxios';
 
 //  OAuth Client ID used to initiate OAuth2Client class.
 const OAUTH_CLIENT_ID =
@@ -69,6 +70,9 @@ export async function getOauthClient(
   const client = new OAuth2Client({
     clientId: OAUTH_CLIENT_ID,
     clientSecret: OAUTH_CLIENT_SECRET,
+    transporter: new Gaxios({
+      proxy: config.getProxy(),
+    }),
   });
 
   client.on('tokens', async (tokens: Credentials) => {
