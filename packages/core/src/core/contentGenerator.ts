@@ -86,6 +86,7 @@ export async function createContentGeneratorConfig(
     contentGeneratorConfig.model = await getEffectiveModel(
       contentGeneratorConfig.apiKey,
       contentGeneratorConfig.model,
+      contentGeneratorConfig.proxy,
     );
 
     return contentGeneratorConfig;
