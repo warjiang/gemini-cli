@@ -85,11 +85,8 @@ export function createContentGeneratorConfig(
     getEffectiveModel(
       contentGeneratorConfig.apiKey,
       contentGeneratorConfig.model,
-    ).then((newModel) => {
-      if (newModel !== contentGeneratorConfig.model) {
-        config.flashFallbackHandler?.(contentGeneratorConfig.model, newModel);
-      }
-    });
+      contentGeneratorConfig.proxy,
+    );
 
     return contentGeneratorConfig;
   }
