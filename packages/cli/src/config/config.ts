@@ -184,7 +184,6 @@ export async function parseArguments(): Promise<CliArgs> {
       type: 'boolean',
       description: 'Run in IDE mode?',
     })
-
     .option('proxy', {
       type: 'string',
       description:
