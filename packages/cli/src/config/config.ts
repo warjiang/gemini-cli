@@ -53,7 +53,6 @@ interface CliArgs {
   allowedMcpServerNames: string[] | undefined;
   extensions: string[] | undefined;
   listExtensions: boolean | undefined;
-  'allowed-mcp-server-names': string | undefined;
   proxy: string | undefined;
 }
 
@@ -170,7 +169,6 @@ async function parseArguments(): Promise<CliArgs> {
       type: 'boolean',
       description: 'List all available extensions and exit.',
     })
-
     .option('proxy', {
       type: 'string',
       description:
