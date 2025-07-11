@@ -31,6 +31,7 @@ vi.mock('crypto');
 
 const mockConfig = {
   getNoBrowser: () => false,
+  getProxy: () => 'http://test.proxy.com:8080',
 } as unknown as Config;
 
 // Mock fetch globally
