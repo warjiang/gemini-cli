@@ -124,7 +124,6 @@ export async function createContentGenerator(
       config.authType,
       gcConfig,
       sessionId,
-      config.proxy,
     );
   }
 
