@@ -57,7 +57,6 @@ export interface CliArgs {
   extensions: string[] | undefined;
   listExtensions: boolean | undefined;
   ideMode: boolean | undefined;
-  'allowed-mcp-server-names': string | undefined;
   proxy: string | undefined;
 }
 
